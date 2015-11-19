@@ -1,0 +1,56 @@
+{
+  "name": "yocto-status-codes",
+  "version": "1.0.0",
+  "description": "Manage and retreive status code & more defined data from given rules.",
+  "scripts": {},
+  "author": {
+    "name": "Yocto SAS",
+    "email": "technique@yocto.re",
+    "url": "http://www.yocto.re"
+  },
+  "contributors": [
+    {
+      "name": "ROBERT Mathieu",
+      "email": "mathieu@yocto.re"
+    }
+  ],
+  "maintainers": [
+    {
+      "name": "ROBERT Mathieu",
+      "email": "mathieu@yocto.re"
+    }
+  ],
+  "main": "dist/index.js",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=4.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/yocto-node-modules/yocto-status-codes.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/yocto-node-modules/yocto-status-codes/issues"
+  },
+  "files": [
+    "dist",
+    "CHANGELOG.md",
+    "LICENSE-2.0.txt",
+    "README.md"
+  ],
+  "keywords": [
+    "http",
+    "codes",
+    "status",
+    "tools"
+  ],
+  "dependencies": {
+    "lodash": "^3.10.1"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-uglify": "^0.10.0",
+    "grunt-mocha-cli": "^2.0.0",
+    "yocto-hint": "^1.2.6"
+  }
+}
