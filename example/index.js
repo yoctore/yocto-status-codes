@@ -1,6 +1,6 @@
 var status = require('../dist');
 
-var successData = { message : 'Yeah !', data : { foo : 'bar' } };
+var successData = { message : 'Yeah !', foo : 'bar' };
 var errorData = { message : 'Bad !', data : { foo : 'bar error' } };
 var systemErrorData = { message : 'Very bad !', data : { foo : 'bar system' } };
 

@@ -51,7 +51,7 @@ StatusCodes.prototype.buildDefault = function (type, data) {
     // given data is object ?
     if (_.isObject(data)) {
       // extend data with correct values
-      _.extend(d, data);
+      _.extend(d.data, data);
     }
 
     // default statement
