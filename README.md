@@ -38,6 +38,10 @@ var systemErrorData = { message : 'Very bad !', data : { foo : 'bar system' } };
 // To retrieve a success reponse
 status.success(successData);
 
+// To add a specific message on base response just do
+status.success(successData, 'message');
+// it works too for error and system erro
+
 // To retrieve an error reponse
 status.error(errorData);
 
