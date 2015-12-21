@@ -5,7 +5,7 @@ var errorData = { message : 'Bad !', data : { foo : 'bar error' } };
 var systemErrorData = { message : 'Very bad !', data : { foo : 'bar system' } };
 
 // To retrieve a success reponse
-console.log(status.success(successData));
+console.log(status.success(successData, 'test message'));
 
 // To retrieve an error reponse
 console.log(status.error(errorData));

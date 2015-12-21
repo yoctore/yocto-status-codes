@@ -40,9 +40,10 @@ function StatusCodes () {
  *
  * @param {String} type default wanted type
  * @param {Object} data default data to append on current object
+ * @param {String} message specific message to ad on default object
  * @return {Object|Boolean} builded object false if is invalid
  */
-StatusCodes.prototype.buildDefault = function (type, data) {
+StatusCodes.prototype.buildDefault = function (type, data, message) {
   // type exists ?
   if (_.has(this.defaultStatus, type) && _.isString(type)) {
     // default statement
@@ -52,6 +53,12 @@ StatusCodes.prototype.buildDefault = function (type, data) {
     if (_.isObject(data)) {
       // extend data with correct values
       _.extend(d.data, data);
+    }
+
+    // assign specific message
+    if (_.isString(message) && !_.isEmpty(message)) {
+      // change message
+      d.message = message;
     }
 
     // default statement
@@ -66,33 +73,36 @@ StatusCodes.prototype.buildDefault = function (type, data) {
  * Default method to build a valid response object object
  *
  * @param {Object} data default data to append on current object
+ * @param {String} message specific message to ad on default object
  * @return {Object|false} builded object false if is invalid
  */
-StatusCodes.prototype.success = function (data) {
+StatusCodes.prototype.success = function (data, message) {
   // default statement
-  return this.buildDefault('success', data);
+  return this.buildDefault('success', data, message);
 };
 
 /**
  * Default method to build an error response object object
  *
  * @param {Object} data default data to append on current object
+ * @param {String} message specific message to ad on default object
  * @return {Object|false} builded object false if is invalid
  */
-StatusCodes.prototype.error = function (data) {
+StatusCodes.prototype.error = function (data, message) {
   // default statement
-  return this.buildDefault('error', data);
+  return this.buildDefault('error', data, message);
 };
 
 /**
  * Default method to build an system response error object object
  *
  * @param {Object} data default data to append on current object
+ * @param {String} message specific message to ad on default object
  * @return {Object|false} builded object false if is invalid
  */
-StatusCodes.prototype.systemError = function (data) {
+StatusCodes.prototype.systemError = function (data, message) {
   // default statement
-  return this.buildDefault('system', data);
+  return this.buildDefault('system', data, message);
 };
 
 // Default export
