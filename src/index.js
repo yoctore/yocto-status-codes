@@ -78,7 +78,7 @@ StatusCodes.prototype.buildDefault = function (type, data, message) {
  */
 StatusCodes.prototype.success = function (data, message) {
   // default statement
-  return this.buildDefault('success', data, message);
+  return this.buildDefault('success', data || {}, message || '');
 };
 
 /**
@@ -90,7 +90,7 @@ StatusCodes.prototype.success = function (data, message) {
  */
 StatusCodes.prototype.error = function (data, message) {
   // default statement
-  return this.buildDefault('error', data, message);
+  return this.buildDefault('error', data || {}, message || '');
 };
 
 /**
@@ -102,7 +102,7 @@ StatusCodes.prototype.error = function (data, message) {
  */
 StatusCodes.prototype.systemError = function (data, message) {
   // default statement
-  return this.buildDefault('system', data, message);
+  return this.buildDefault('system', data || {}, message || '');
 };
 
 // Default export
