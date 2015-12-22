@@ -1,4 +1,4 @@
-## 1.1.0 && 1.1.1 (2015-12-21)
+## 1.1.0 && 1.1.1 && 1.1.2 (2015-12-21)
 
 - Add a param to overload message value
 - Add default value on properties if is not set. in some case data is not clean

@@ -26,11 +26,6 @@ function StatusCodes () {
     system  : {
       status : 'error',
       code   : '500'
-    },
-    // extra default item
-    extra   : {
-      message : '',
-      data    : { }
     }
   };
 }
@@ -47,7 +42,7 @@ StatusCodes.prototype.buildDefault = function (type, data, message) {
   // type exists ?
   if (_.has(this.defaultStatus, type) && _.isString(type)) {
     // default statement
-    var d  = _.extend({}, _.clone(this.defaultStatus[type]), _.clone(this.defaultStatus.extra));
+    var d  = _.extend({}, _.clone(this.defaultStatus[type]), { message : '', data : {} });
 
     // given data is object ?
     if (_.isObject(data)) {
