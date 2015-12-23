@@ -1,3 +1,7 @@
+## 1.2.0 (2015-12-23)
+- Add function to load an configuration file and get status code by reference code
+- Add test units
+
 ## 1.1.0 && 1.1.1 && 1.1.2 (2015-12-21)
 
 - Add a param to overload message value

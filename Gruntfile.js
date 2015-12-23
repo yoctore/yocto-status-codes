@@ -24,27 +24,25 @@ module.exports = function (grunt) {
         } ]
       }
     },
-    // unit tests
-    mochacli  : {
-      options : {
-        'reporter'       : 'spec',
-        'inline-diffs'   : false,
-        'no-exit'        : true,
-        'force'          : false,
-        'check-leaks'    : true,
-        'bail'           : false
-      },
-      all     : [ 'test/*.js' ]
+    // unit testing
+    mochaTest : {
+      // Test all unit test
+      all  : {
+        options : {
+          reporter : 'list',
+        },
+        src     : [ 'test/*.js' ]
+      }
     }
   });
 
   // Load the plugins
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-mocha-cli');
+  grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('yocto-hint');
 
   grunt.registerTask('hint', 'yoctohint');
-  grunt.registerTask('tests', 'mochacli');
+  grunt.registerTask('tests', 'mochaTest');
   grunt.registerTask('build', [ 'hint', 'tests', 'uglify' ]);
   grunt.registerTask('default', 'build');
 };

@@ -1,6 +1,6 @@
 {
   "name": "yocto-status-codes",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Manage and retreive status code & more defined data from given rules.",
   "scripts": {},
   "author": {
@@ -45,12 +45,16 @@
     "tools"
   ],
   "dependencies": {
-    "lodash": "^3.10.1"
+    "joi": "^7.0.1",
+    "lodash": "^3.10.1",
+    "yocto-logger": "^1.1.1"
   },
   "devDependencies": {
+    "chai": "^3.4.1",
     "grunt": "~0.4.5",
     "grunt-contrib-uglify": "^0.10.0",
-    "grunt-mocha-cli": "^2.0.0",
+    "grunt-mocha-test": "^0.12.7",
+    "mocha": "^2.3.4",
     "yocto-hint": "^1.2.6"
   }
 }
