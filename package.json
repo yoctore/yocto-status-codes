@@ -1,6 +1,6 @@
 {
   "name": "yocto-status-codes",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Manage and retreive status code & more defined data from given rules.",
   "scripts": {},
   "author": {
@@ -30,7 +30,7 @@
     "url": "https://github.com/yoctore/yocto-status-codes.git"
   },
   "bugs": {
-    "url": "https://github.com/yoctore/yocto-status-codes.git/issues"
+    "url": "https://github.com/yoctore/yocto-status-codes/issues"
   },
   "files": [
     "dist",

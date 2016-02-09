@@ -57,4 +57,5 @@ status.systemError(systemErrorData);
 
 ## Changelog
 
-All history is [here](https://gitlab.com/yocto-node-modules/yocto-status-codes/blob/master/CHANGELOG.md)
+All history is [here](https://github.com/yoctore/yocto-status-codes/blob/master/CHANGELOG.md)
+
