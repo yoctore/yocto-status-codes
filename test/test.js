@@ -5,6 +5,9 @@ var base        = path.normalize(process.cwd());
 var chai        = require('chai');
 var assert      = chai.assert;
 
+// disableConsole
+logger.disableConsole();
+
 describe('Test module', function() {
 
   /**
@@ -32,6 +35,17 @@ describe('Test module', function() {
   });
 
   /**
+  * try to load an wrong file
+  */
+  it('should return false when loading config because file doesnt have a good schema', function () {
+
+    // load configuration
+    var res =   statusCodes.loadConfig(base + '/test/configError.json');
+
+    assert.equal(res, false);
+  });
+
+  /**
   * try to load config file
   */
   it('should return true when loading file ', function () {
@@ -45,7 +59,7 @@ describe('Test module', function() {
   /**
   * try retrieve code 206000
   */
-  it('should return code 206', function () {
+  it('should return code 206201 in config file', function () {
 
     // retrieve code
     var res =   statusCodes.get(206, 201);
@@ -59,7 +73,7 @@ describe('Test module', function() {
   /**
   * try retrieve code 206000
   */
-  it('should return code 206', function () {
+  it('should return code 206000 found in config file', function () {
 
     // retrieve code
     var res =   statusCodes.get(206);

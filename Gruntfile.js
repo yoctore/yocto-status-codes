@@ -29,7 +29,7 @@ module.exports = function (grunt) {
       // Test all unit test
       all  : {
         options : {
-          reporter : 'list',
+          reporter : 'spec',
         },
         src     : [ 'test/*.js' ]
       }

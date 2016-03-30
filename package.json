@@ -1,6 +1,6 @@
 {
   "name": "yocto-status-codes",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Manage and retreive status code & more defined data from given rules.",
   "scripts": {
     "test" : "grunt test"

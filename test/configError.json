@@ -1,0 +1,57 @@
+[
+  {
+    "category"  : 200,
+    "childs"    :  [
+      {
+        "code"      : "000",
+        "codeHTTP"  : 200,
+        "status"    : "success",
+        "label"     : "",
+        "message"   : ""
+      }
+    ]
+  },
+  {
+    "category"  : 206,
+    "childs"    :  [
+      {
+        "code"      : "000",
+        "codeHTTP"  : 200,
+        "status"    : "success",
+        "label"     : "success-partial",
+        "message"   : "default"
+      },
+      {
+        "code"      : "001",
+        "codeHTTP"  : 200,
+        "status"    : "success",
+        "label"     : "success-partial",
+        "message"   : "Schema at least one element is invalid"
+      },
+      {
+        "category" : 100,
+        "childs"   :  [
+          {
+            "code"      : "100",
+            "status"    : "error",
+            "codeHTTP"  : 200,
+            "label"     : "account-base-error-code",
+            "message"   : "aa"
+          }
+        ]
+      },
+      {
+        "category" : 200,
+        "childs"   :  [
+          {
+            "code"      : "201",
+            "status"    : "error",
+            "codeHTTP"  : 200,
+            "label"     : "test code 201",
+            "message"   : "test code 201"
+          }
+        ]
+      }
+    ]
+  }
+]
