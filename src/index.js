@@ -121,23 +121,60 @@ StatusCodes.prototype.systemError = function (data, message) {
  * @return {boolean} true if file is loaded, otherwise false
  */
 StatusCodes.prototype.loadConfig = function (pathFile) {
-
   // try to load external file
   try {
 
     // Parse the file
     this.file = JSON.parse(fs.readFileSync(path.normalize(pathFile)));
 
-    // IDEA : ajouter joi schema validation ?
+    // joi schema of the config file
+    var schema = joi.array().min(1).items(
+      joi.object().required().keys({
+        category    : joi.number().integer().required().min(0),
+        childs      :  joi.array().required().items(
+          joi.alternatives().try(
+            joi.object().keys({
+              code      : joi.number().integer().required(),
+              codeHTTP  : joi.number().integer().required(),
+              status    : joi.string().required().empty(),
+              label     : joi.string().required().empty(),
+              message   : joi.string().required().empty()
+            }),
+            joi.object().keys({
+              category    : joi.number().integer().required().min(0),
+              childs      :  joi.array().required().items(
+                joi.object().keys({
+                  code      : joi.number().integer().required(),
+                  codeHTTP  : joi.number().integer().required(),
+                  status    : joi.string().required().empty(),
+                  label     : joi.string().required().empty(),
+                  message   : joi.string().required().empty()
+                })
+              )
+            })
+          )
+        )
+      })
+    );
+
+    // validate joi schema with the given file
+    var result   = schema.validate(this.file);
+
+    // check if an error occured
+    if (result.error) {
+      // throw a new exception
+      throw ('The joi validation failed, more details : ' + result.error.toString());
+    }
+
     this.logger.info('[ StatusCodes.loadConfig ] - an external configuration file : ' + pathFile +
     ' was loaded with success');
-
+    // Config file was success loaded
     return true;
   } catch (error) {
-
     // An error occured when loading file
     this.logger.error('[ StatusCodes.loadConfig ] - an error occured when loading external ' +
     'configuration file, more details : ' + error);
+    // Config file was not loaded
     return false;
   }
 };
@@ -154,6 +191,7 @@ StatusCodes.prototype.get = function (category, code, data) {
   // Initialise subCode if is not define
   code = code || '000';
 
+  // Set An default error code to indicate that an error occured and response can't be seet
   var errorResponse = {
     codeHTTP    : 200,
     content     : {
@@ -198,7 +236,7 @@ StatusCodes.prototype.get = function (category, code, data) {
   // override data with default value from joi schema
   data = result.value.data;
 
-  // define final objet to return
+  // define final object to return
   var response = {};
 
   // try to create final object
@@ -225,35 +263,48 @@ StatusCodes.prototype.get = function (category, code, data) {
       // clone response
       response = _.clone(_.find(subcategoryFound.childs, { code : code }) || {});
     }
+
+    // If undefined return the default header error
+    if (_.isUndefined(response) || _.isEmpty(response)) {
+      // return an default error message
+      return errorResponse;
+    }
+
+    // Set code error
+    response.code = category.toString() + response.code;
+
+    // return the final object
+    response = {
+      codeHTTP : response.codeHTTP,
+      // omit uncessary keys form config
+      content  : _.omit(response, [ 'label', 'codeHTTP' ])
+    };
+
+    // set content key
+    response.content = _.extend(response.content, data);
+
+    // return the response
+    return response;
   } catch (error) {
+    // set error response
+    response = errorResponse;
 
     // An error occured
     this.logger.error('[ response.get ] - error when retriving response, more details :', error);
+
+    // return the response
+    return response;
   }
-
-  // If undefined return the default header error
-  if (_.isUndefined(response) || _.isEmpty(response)) {
-
-    // return an default error message
-    return errorResponse;
-  }
-
-  // Set code error
-  response.code = category.toString() + response.code;
-
-  // return the final object
-  response = {
-    codeHTTP : response.codeHTTP,
-    // omit uncessary keys form config
-    content  : _.omit(response, [ 'label', 'codeHTTP' ])
-  };
-
-  // set content key
-  response.content = _.extend(response.content, data);
-
-  // return the response
-  return response;
 };
 
 // Default export
-module.exports = new (StatusCodes)();
+module.exports = function (l) {
+  // is a valid logger ?
+  if (_.isUndefined(l) || _.isNull(l)) {
+    logger.warning('[ Yocto-status-code.constructor ] - Invalid logger given. Use internal logger');
+    // assign
+    l = logger;
+  }
+  // default statement
+  return new (StatusCodes)(l);
+};

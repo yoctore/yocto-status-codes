@@ -1,4 +1,5 @@
-var statusCodes = require('../dist/index');
+var logger      = require('yocto-logger');
+var statusCodes = require('../src/index')(logger);
 var path        = require('path');
 var base        = path.normalize(process.cwd());
 var chai        = require('chai');
@@ -39,6 +40,20 @@ describe('Test module', function() {
     var res =   statusCodes.loadConfig(base + '/test/config.json');
 
     assert.equal(res, true);
+  });
+
+  /**
+  * try retrieve code 206000
+  */
+  it('should return code 206', function () {
+
+    // retrieve code
+    var res =   statusCodes.get(206, 201);
+
+    assert.equal(res.codeHTTP, 200);
+    assert.equal(res.content.code, '206201');
+    assert.equal(res.content.status, 'error');
+    assert.equal(res.content.message, 'test code 201');
   });
 
   /**

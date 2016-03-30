@@ -1,6 +1,8 @@
-## 1.2.0 (2015-12-23)
+## 1.2.0 (2016-03-30)
 - Add function to load an configuration file and get status code by reference code
 - Add test units
+- Add joi validation when loading configuration file
+- Add possibilities to set yocto-logger in constructor
 
 ## 1.1.0 && 1.1.1 && 1.1.2 (2015-12-21)
 

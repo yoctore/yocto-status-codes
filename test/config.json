@@ -36,7 +36,19 @@
             "status"    : "error",
             "codeHTTP"  : 200,
             "label"     : "account-base-error-code",
-            "message"   : ""
+            "message"   : "aa"
+          }
+        ]
+      },
+      {
+        "category" : 200,
+        "childs"   :  [
+          {
+            "code"      : "201",
+            "status"    : "error",
+            "codeHTTP"  : 200,
+            "label"     : "test code 201",
+            "message"   : "test code 201"
           }
         ]
       }

@@ -45,16 +45,16 @@
     "tools"
   ],
   "dependencies": {
-    "joi": "^7.0.1",
-    "lodash": "^3.10.1",
-    "yocto-logger": "^1.1.1"
+    "joi": "8.0.5",
+    "lodash": "4.6.1",
+    "yocto-logger": "1.1.3"
   },
   "devDependencies": {
-    "chai": "^3.4.1",
+    "chai": "3.5.0",
     "grunt": "~0.4.5",
-    "grunt-contrib-uglify": "^0.10.0",
+    "grunt-contrib-uglify": "1.0.1",
     "grunt-mocha-test": "^0.12.7",
-    "mocha": "^2.3.4",
-    "yocto-hint": "^1.2.6"
+    "mocha": "2.4.5",
+    "yocto-hint": "1.3.6"
   }
 }
