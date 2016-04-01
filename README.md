@@ -1,3 +1,5 @@
+[![NPM](https://nodei.co/npm/yocto-status-codes.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/yocto-status-codes/)
+
 ![alt text](https://david-dm.org/yoctore/yocto-status-codes.svg "Dependencies Status")
 [![Code Climate](https://codeclimate.com/github/yoctore/yocto-status-codes/badges/gpa.svg)](https://codeclimate.com/github/yoctore/yocto-status-codes)
 [![Test Coverage](https://codeclimate.com/github/yoctore/yocto-status-codes/badges/coverage.svg)](https://codeclimate.com/github/yoctore/yocto-status-codes/coverage)
